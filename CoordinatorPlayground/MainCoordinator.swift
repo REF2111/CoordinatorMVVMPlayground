@@ -23,13 +23,14 @@ class MainCoordinator: BaseCoordinator {
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func buySubscription() {
-        let vc = BuyViewController.instantiate()
+    func buy() {
+        let vc = BuyTableViewController.instantiate()
         vc.coordinator = self
+        vc.viewModel = BuyViewModel()
         navigationController.pushViewController(vc, animated: true)
     }
 
-    func createAccount() {
+    func create() {
         let vc = CreateAccountViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)

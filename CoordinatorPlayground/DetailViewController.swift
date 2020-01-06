@@ -12,6 +12,13 @@ class DetailViewController: UIViewController, Storyboarded {
 
     weak var coordinator: DetailCoordinator?
 
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+
+        title = "Detail"
+    }
+
     deinit {
         coordinator?.isCompleted?()
     }
