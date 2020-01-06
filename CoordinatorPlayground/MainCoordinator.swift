@@ -25,8 +25,9 @@ class MainCoordinator: BaseCoordinator {
 
     func buy() {
         let vc = BuyTableViewController.instantiate()
-        vc.coordinator = self
-        vc.viewModel = BuyViewModel()
+        let viewModel = BuyViewModel()
+        viewModel.coordinator = self
+        vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
     }
 
@@ -36,8 +37,8 @@ class MainCoordinator: BaseCoordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 
-    func showDetail() {
-        detailCoordinator = DetailCoordinator(navigationController: navigationController)
+    func showDetail(productViewModel: ProductViewModel) {
+        detailCoordinator = DetailCoordinator(navigationController: navigationController, productViewModel: productViewModel)
         store(coordinator: detailCoordinator!)
         detailCoordinator?.start()
 

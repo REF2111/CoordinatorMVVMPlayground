@@ -11,7 +11,6 @@ import UIKit
 
 class BuyTableViewController: UITableViewController, Storyboarded {
 
-    weak var coordinator: MainCoordinator?
     var viewModel: BuyViewModel!
     private var productCancellable: AnyCancellable?
     private var products = [ProductViewModel]()
@@ -48,5 +47,9 @@ class BuyTableViewController: UITableViewController, Storyboarded {
         """
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.action.send(.detail(products[indexPath.row]))
     }
 }

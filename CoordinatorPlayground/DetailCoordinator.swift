@@ -11,14 +11,17 @@ import UIKit
 class DetailCoordinator: BaseCoordinator {
 
     private var navigationController: UINavigationController
+    private var viewModel: ProductViewModel
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, productViewModel: ProductViewModel) {
         self.navigationController = navigationController
+        self.viewModel = productViewModel
     }
 
     override func start() {
         let vc = DetailViewController.instantiate()
-        vc.coordinator = self
+        viewModel.coordinator = self
+        vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
     }
 }

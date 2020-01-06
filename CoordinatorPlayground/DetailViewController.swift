@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, Storyboarded {
 
-    weak var coordinator: DetailCoordinator?
+    var viewModel: ProductViewModel!
 
     override func viewDidLoad() {
 
@@ -20,6 +20,6 @@ class DetailViewController: UIViewController, Storyboarded {
     }
 
     deinit {
-        coordinator?.isCompleted?()
+        viewModel.coordinator?.isCompleted?()
     }
 }

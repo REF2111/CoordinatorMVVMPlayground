@@ -11,6 +11,7 @@ import Foundation
 class ProductViewModel {
 
     private var product: Product!
+    weak var coordinator: DetailCoordinator?
 
     init(product: Product) {
         self.product = product
