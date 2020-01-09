@@ -6,12 +6,21 @@
 //  Copyright © 2020 Raphael-Alexander Berendes. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol CoordinatorDelegate: class {
+    func didComplete(coordinator: Coordinator?)
+}
 
 class BaseCoordinator: Coordinator {
     
+    weak var navigationController: UINavigationController?
+    weak var delegate: CoordinatorDelegate?
     var childCoordinators : [Coordinator] = []
-    var isCompleted: (() -> ())?
+    
+    init(navigationController: UINavigationController?) {
+        self.navigationController = navigationController
+    }
 
     func start() {
         fatalError("Children should implement `start`.")

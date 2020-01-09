@@ -16,21 +16,40 @@ class ProductViewModel {
     init(product: Product) {
         self.product = product
     }
+    
+    func didComplete() {
+        coordinator?.delegate?.didComplete(coordinator: coordinator)
+    }
 
     var name: String {
         product.name
     }
 
-    var inches: String {
-        product.inches
+    var priceString: String {
+        
+        var price = Float(product.price)
+        let decimalPlaces = Float(product.decimalPlaces)
+        
+        if product.decimalPlaces != .zero {
+            price = price / powf(10, decimalPlaces)
+        }
+        
+        let formatter = NumberFormatter()
+        
+        formatter.numberStyle = .currency
+        formatter.currencyCode = product.currency
+        formatter.minimumFractionDigits = product.decimalPlaces
+        formatter.maximumFractionDigits = product.decimalPlaces
+        
+        return formatter.string(for: price) ?? formatter.string(for: 0)!
     }
 
-    var dateFormatted: String {
+    var dateString: String {
 
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
 
-        let timestamp = Double(product.timestamp)!
+        let timestamp = Double(product.availableSince)!
         let date = Date(timeIntervalSince1970: timestamp)
 
         return formatter.string(from: date)

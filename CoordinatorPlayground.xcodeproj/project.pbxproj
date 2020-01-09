@@ -61,6 +61,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6008A33F23C7BFF000396782 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				64F3B02023BF884800787F49 /* Coordinator.swift */,
+				64F3B02A23BF939B00787F49 /* BaseCoordinator.swift */,
+				64F3B02C23BF941E00787F49 /* AppCoordinator.swift */,
+				64F3B02423BF8A2900787F49 /* MainCoordinator.swift */,
+				64F3B02E23BF95C200787F49 /* DetailCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		64F3B00023BF878D00787F49 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +92,7 @@
 		64F3B00B23BF878D00787F49 /* CoordinatorPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				6008A33F23C7BFF000396782 /* Coordinators */,
 				64F3B00C23BF878D00787F49 /* AppDelegate.swift */,
 				64F3B00E23BF878D00787F49 /* SceneDelegate.swift */,
 				64F3B01023BF878D00787F49 /* ViewController.swift */,
@@ -87,15 +100,10 @@
 				64F3B01523BF879000787F49 /* Assets.xcassets */,
 				64F3B01723BF879000787F49 /* LaunchScreen.storyboard */,
 				64F3B01A23BF879000787F49 /* Info.plist */,
-				64F3B02023BF884800787F49 /* Coordinator.swift */,
 				64F3B02223BF891700787F49 /* Storyboarded.swift */,
-				64F3B02423BF8A2900787F49 /* MainCoordinator.swift */,
-				64F3B02A23BF939B00787F49 /* BaseCoordinator.swift */,
 				64F3B02823BF8EBC00787F49 /* CreateAccountViewController.swift */,
 				64F3B02623BF8EA700787F49 /* BuyViewController.swift */,
-				64F3B02C23BF941E00787F49 /* AppCoordinator.swift */,
 				64F3B03023BF965C00787F49 /* DetailViewController.swift */,
-				64F3B02E23BF95C200787F49 /* DetailCoordinator.swift */,
 				64FEECBA23C38D6A00B5738F /* Product.swift */,
 				6444996E23C3971E00DE8795 /* ProductViewModel.swift */,
 				6444997023C399C500DE8795 /* BuyViewModel.swift */,

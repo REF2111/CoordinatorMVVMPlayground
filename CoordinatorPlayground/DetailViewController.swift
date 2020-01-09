@@ -20,6 +20,6 @@ class DetailViewController: UIViewController, Storyboarded {
     }
 
     deinit {
-        viewModel.coordinator?.isCompleted?()
+        viewModel.didComplete()
     }
 }

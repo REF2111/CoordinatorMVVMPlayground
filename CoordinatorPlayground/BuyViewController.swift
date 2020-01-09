@@ -21,7 +21,7 @@ class BuyTableViewController: UITableViewController, Storyboarded {
 
         title = "Buy"
 
-        productCancellable = viewModel.products
+        productCancellable = viewModel.productsValueSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] products in
                 self?.products = products
@@ -42,8 +42,8 @@ class BuyTableViewController: UITableViewController, Storyboarded {
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = """
         \(product.name)
-        Inches: \(product.inches)
-        Available since: \(product.dateFormatted)
+        Price: \(product.priceString)
+        Available since: \(product.dateString)
         """
 
         return cell
