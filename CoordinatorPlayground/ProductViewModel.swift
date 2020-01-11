@@ -52,4 +52,11 @@ class ProductViewModel: ViewModel {
         return formatter.string(from: date)
     }
     
+    func buy() {
+        
+        (coordinator as? ProductCoordinator)?.buy(product: product, completion: { success in
+            print(success)
+        })
+    }
+    
 }

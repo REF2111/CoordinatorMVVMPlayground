@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		603CFA1423CA029200883397 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1323CA029200883397 /* TabBarController.swift */; };
 		603CFA1623CA07F200883397 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1523CA07F200883397 /* BaseViewModel.swift */; };
+		603CFA1823CA138200883397 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1723CA138200883397 /* UserManager.swift */; };
+		603CFA1A23CA142700883397 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1923CA142700883397 /* LoginCoordinator.swift */; };
 		603D7E1523C9F7C500EE2A10 /* ProductCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603D7E1423C9F7C500EE2A10 /* ProductCoordinator.swift */; };
 		603D7E1723C9FAFE00EE2A10 /* ProductFlowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603D7E1623C9FAFE00EE2A10 /* ProductFlowViewModel.swift */; };
 		603D7E1A23C9FCCC00EE2A10 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603D7E1923C9FCCC00EE2A10 /* ViewModel.swift */; };
@@ -22,13 +24,15 @@
 		64F3B02323BF891700787F49 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B02223BF891700787F49 /* Storyboarded.swift */; };
 		64F3B02723BF8EA700787F49 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B02623BF8EA700787F49 /* ProductsTableViewController.swift */; };
 		64F3B02B23BF939B00787F49 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B02A23BF939B00787F49 /* BaseCoordinator.swift */; };
-		64F3B03123BF965C00787F49 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B03023BF965C00787F49 /* ProductDetailViewController.swift */; };
+		64F3B03123BF965C00787F49 /* ProductDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B03023BF965C00787F49 /* ProductDetailTableViewController.swift */; };
 		64FEECBB23C38D6A00B5738F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FEECBA23C38D6A00B5738F /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		603CFA1323CA029200883397 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		603CFA1523CA07F200883397 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		603CFA1723CA138200883397 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		603CFA1923CA142700883397 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		603D7E1423C9F7C500EE2A10 /* ProductCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCoordinator.swift; sourceTree = "<group>"; };
 		603D7E1623C9FAFE00EE2A10 /* ProductFlowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFlowViewModel.swift; sourceTree = "<group>"; };
 		603D7E1923C9FCCC00EE2A10 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -44,7 +48,7 @@
 		64F3B02223BF891700787F49 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		64F3B02623BF8EA700787F49 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
 		64F3B02A23BF939B00787F49 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		64F3B03023BF965C00787F49 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		64F3B03023BF965C00787F49 /* ProductDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailTableViewController.swift; sourceTree = "<group>"; };
 		64FEECBA23C38D6A00B5738F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +69,7 @@
 				64F3B02023BF884800787F49 /* Coordinator.swift */,
 				64F3B02A23BF939B00787F49 /* BaseCoordinator.swift */,
 				603D7E1423C9F7C500EE2A10 /* ProductCoordinator.swift */,
+				603CFA1923CA142700883397 /* LoginCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -73,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				64F3B02623BF8EA700787F49 /* ProductsTableViewController.swift */,
-				64F3B03023BF965C00787F49 /* ProductDetailViewController.swift */,
+				64F3B03023BF965C00787F49 /* ProductDetailTableViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				6444996E23C3971E00DE8795 /* ProductViewModel.swift */,
 				603D7E1623C9FAFE00EE2A10 /* ProductFlowViewModel.swift */,
 				603CFA1323CA029200883397 /* TabBarController.swift */,
+				603CFA1723CA138200883397 /* UserManager.swift */,
 			);
 			path = CoordinatorPlayground;
 			sourceTree = "<group>";
@@ -198,16 +204,18 @@
 				603D7E1723C9FAFE00EE2A10 /* ProductFlowViewModel.swift in Sources */,
 				6444996F23C3971E00DE8795 /* ProductViewModel.swift in Sources */,
 				64F3B02123BF884800787F49 /* Coordinator.swift in Sources */,
+				603CFA1823CA138200883397 /* UserManager.swift in Sources */,
 				603CFA1423CA029200883397 /* TabBarController.swift in Sources */,
 				64F3B02B23BF939B00787F49 /* BaseCoordinator.swift in Sources */,
 				603CFA1623CA07F200883397 /* BaseViewModel.swift in Sources */,
-				64F3B03123BF965C00787F49 /* ProductDetailViewController.swift in Sources */,
+				64F3B03123BF965C00787F49 /* ProductDetailTableViewController.swift in Sources */,
 				603D7E1A23C9FCCC00EE2A10 /* ViewModel.swift in Sources */,
 				603D7E1523C9F7C500EE2A10 /* ProductCoordinator.swift in Sources */,
 				64F3B02323BF891700787F49 /* Storyboarded.swift in Sources */,
 				64FEECBB23C38D6A00B5738F /* Product.swift in Sources */,
 				64F3B00D23BF878D00787F49 /* AppDelegate.swift in Sources */,
 				64F3B02723BF8EA700787F49 /* ProductsTableViewController.swift in Sources */,
+				603CFA1A23CA142700883397 /* LoginCoordinator.swift in Sources */,
 				64F3B00F23BF878D00787F49 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

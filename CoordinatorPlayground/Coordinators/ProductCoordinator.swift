@@ -20,9 +20,23 @@ class ProductCoordinator: BaseCoordinator {
     
     func showDetail(product: ProductViewModel) {
         
-        let vc = ProductDetailViewController.instantiate()
+        let vc = ProductDetailTableViewController.instantiate()
         viewModel?.coordinator = self
         vc.viewModel = product
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func buy(product: Product, completion: (_ success: Bool) -> Void) {
+                
+        if UserManager.isUserLoggedIn {
+            completion(true)
+        } else {
+            startLoginFlow()
+        }
+    }
+    
+    func startLoginFlow() {
+        
+            
     }
 }
