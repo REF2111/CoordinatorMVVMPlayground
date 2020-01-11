@@ -10,10 +10,19 @@ import UIKit
 
 class LoginCoordinator: BaseCoordinator {
     
+    private var viewController: UIViewController!
+    
+    init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?, viewController: UIViewController) {
+        
+        super.init(navigationController: navigationController, parentCoordinator: parentCoordinator)
+        
+        self.viewController =  viewController
+    }
+    
     override func start() {
         
         let vc = LoginViewController.instantiate()
         vc.viewModel = LoginViewModel(coordinator: self)
-        navigationController?.pushViewController(vc, animated: true)
+        viewController.present(vc, animated: true)
     }
 }

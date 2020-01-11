@@ -20,6 +20,8 @@
 		60D755D123CA6E8B00F49D29 /* ProductFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755D023CA6E8B00F49D29 /* ProductFlow.swift */; };
 		60D755D423CA6F0100F49D29 /* MainFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755D323CA6F0100F49D29 /* MainFlow.swift */; };
 		60D755D623CA6F4F00F49D29 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755D523CA6F4F00F49D29 /* LoginViewModel.swift */; };
+		60D755D923CA7D5B00F49D29 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755D823CA7D5B00F49D29 /* UITextField+Extension.swift */; };
+		60D755DB23CA906B00F49D29 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755DA23CA906B00F49D29 /* String+Extension.swift */; };
 		6444996F23C3971E00DE8795 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6444996E23C3971E00DE8795 /* ProductViewModel.swift */; };
 		64F3B00D23BF878D00787F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B00C23BF878D00787F49 /* AppDelegate.swift */; };
 		64F3B00F23BF878D00787F49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B00E23BF878D00787F49 /* SceneDelegate.swift */; };
@@ -48,6 +50,8 @@
 		60D755D023CA6E8B00F49D29 /* ProductFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFlow.swift; sourceTree = "<group>"; };
 		60D755D323CA6F0100F49D29 /* MainFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlow.swift; sourceTree = "<group>"; };
 		60D755D523CA6F4F00F49D29 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		60D755D823CA7D5B00F49D29 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		60D755DA23CA906B00F49D29 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		6444996E23C3971E00DE8795 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		64F3B00923BF878D00787F49 /* CoordinatorPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F3B00C23BF878D00787F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		60D755D723CA7D4800F49D29 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				60D755DA23CA906B00F49D29 /* String+Extension.swift */,
+				60D755D823CA7D5B00F49D29 /* UITextField+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		64F3B00023BF878D00787F49 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +161,7 @@
 		64F3B00B23BF878D00787F49 /* CoordinatorPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				60D755D723CA7D4800F49D29 /* Extension */,
 				60D755D223CA6ED100F49D29 /* Main */,
 				603D7E1823C9FCAF00EE2A10 /* ViewModel */,
 				603D7E1323C9F62600EE2A10 /* Product */,
@@ -248,11 +262,13 @@
 				603D7E1A23C9FCCC00EE2A10 /* ViewModel.swift in Sources */,
 				603D7E1523C9F7C500EE2A10 /* ProductCoordinator.swift in Sources */,
 				64F3B02323BF891700787F49 /* Storyboarded.swift in Sources */,
+				60D755DB23CA906B00F49D29 /* String+Extension.swift in Sources */,
 				64FEECBB23C38D6A00B5738F /* Product.swift in Sources */,
 				64F3B00D23BF878D00787F49 /* AppDelegate.swift in Sources */,
 				60D755CB23CA6D0400F49D29 /* LoginViewController.swift in Sources */,
 				64F3B02723BF8EA700787F49 /* ProductsTableViewController.swift in Sources */,
 				603CFA1A23CA142700883397 /* LoginCoordinator.swift in Sources */,
+				60D755D923CA7D5B00F49D29 /* UITextField+Extension.swift in Sources */,
 				64F3B00F23BF878D00787F49 /* SceneDelegate.swift in Sources */,
 				60D755D123CA6E8B00F49D29 /* ProductFlow.swift in Sources */,
 				60D755CF23CA6D9100F49D29 /* LoginFlow.swift in Sources */,

@@ -35,7 +35,9 @@ class ProductCoordinator: BaseCoordinator {
     
     func startLoginFlow() {
         
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self)
+        guard let viewController = navigationController?.topViewController else { return }
+        
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self, viewController: viewController)
         store(coordinator: loginCoordinator)
         
         loginCoordinator.start()
