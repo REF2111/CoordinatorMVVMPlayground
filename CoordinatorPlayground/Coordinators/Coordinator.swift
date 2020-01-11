@@ -34,5 +34,9 @@ protocol CoordinatorDelegate: class {
 
 extension CoordinatorDelegate {
     
-    func didComplete(coordinator: BaseCoordinator?) {}
+    func didComplete(coordinator: BaseCoordinator?) {
+        guard let coordinator = coordinator else { return }
+        
+        coordinator.parentCoordinator?.free(coordinator: coordinator)
+    }
 }

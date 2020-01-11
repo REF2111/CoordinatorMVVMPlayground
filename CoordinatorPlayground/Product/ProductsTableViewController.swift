@@ -9,7 +9,7 @@
 import Combine
 import UIKit
 
-class ProductsTableViewController: UITableViewController, Storyboarded {
+class ProductsTableViewController: UITableViewController, ProductFlow, Storyboarded {
 
     var viewModel: ProductFlowViewModel!
     private var productCancellable: AnyCancellable?

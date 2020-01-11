@@ -12,7 +12,8 @@ class LoginCoordinator: BaseCoordinator {
     
     override func start() {
         
-        let vc = UIViewController()
+        let vc = LoginViewController.instantiate()
+        vc.viewModel = LoginViewModel(coordinator: self)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

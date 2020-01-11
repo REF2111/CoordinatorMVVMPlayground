@@ -42,7 +42,7 @@ class ProductDetailTableViewDataSource {
     }
 }
 
-class ProductDetailTableViewController: UITableViewController, Storyboarded {
+class ProductDetailTableViewController: UITableViewController, ProductFlow, Storyboarded {
     
     private var dataSource: ProductDetailTableViewDataSource!
     var viewModel: ProductViewModel!

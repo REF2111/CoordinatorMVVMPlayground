@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController, Storyboarded {
+class TabBarController: UITabBarController, MainFlow, Storyboarded {
 
     let productCoordinator = ProductCoordinator(navigationController: UINavigationController(), parentCoordinator: nil)
     

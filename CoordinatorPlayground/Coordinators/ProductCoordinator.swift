@@ -35,6 +35,10 @@ class ProductCoordinator: BaseCoordinator {
     
     func startLoginFlow() {
         
-            
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self)
+        store(coordinator: loginCoordinator)
+        
+        loginCoordinator.start()
     }
+
 }
