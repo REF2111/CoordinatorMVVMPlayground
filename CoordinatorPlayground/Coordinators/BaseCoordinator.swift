@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol CoordinatorDelegate: class {
-    func didComplete(coordinator: Coordinator?)
-}
-
-class BaseCoordinator: Coordinator {
+class BaseCoordinator: Coordinator, CoordinatorDelegate {
     
-    weak var navigationController: UINavigationController?
-    weak var delegate: CoordinatorDelegate?
-    var childCoordinators : [Coordinator] = []
+    var navigationController: UINavigationController?
+    var parentCoordinator: BaseCoordinator?
+    var childCoordinators : [BaseCoordinator] = []
+    var viewModel: ViewModel?
     
-    init(navigationController: UINavigationController?) {
+    init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?, viewModel: ViewModel?) {
+        
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
+        self.viewModel = viewModel
     }
 
     func start() {

@@ -1,5 +1,5 @@
 //
-//  BuyViewController.swift
+//  ProductsTableViewController.swift
 //  CoordinatorPlayground
 //
 //  Created by Raphael-Alexander Berendes on 03.01.20.
@@ -9,9 +9,9 @@
 import Combine
 import UIKit
 
-class BuyTableViewController: UITableViewController, Storyboarded {
+class ProductsTableViewController: UITableViewController, Storyboarded {
 
-    var viewModel: BuyViewModel!
+    var viewModel: ProductFlowViewModel!
     private var productCancellable: AnyCancellable?
     private var products = [ProductViewModel]()
 
@@ -19,7 +19,7 @@ class BuyTableViewController: UITableViewController, Storyboarded {
 
         super.viewDidLoad()
 
-        title = "Buy"
+        title = "Products"
 
         productCancellable = viewModel.productsValueSubject
             .receive(on: DispatchQueue.main)

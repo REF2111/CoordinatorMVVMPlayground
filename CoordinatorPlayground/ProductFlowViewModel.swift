@@ -1,29 +1,29 @@
 //
-//  BuyViewModel.swift
+//  ProductFlowViewModel.swift
 //  CoordinatorPlayground
 //
-//  Created by Raphael-Alexander Berendes on 06.01.20.
+//  Created by Raphael Berendes on 11.01.20.
 //  Copyright © 2020 Raphael-Alexander Berendes. All rights reserved.
 //
 
 import Combine
-import Foundation
 
-class BuyViewModel {
-
+class ProductFlowViewModel: BaseViewModel {
+    
     enum Action {
         case detail(ProductViewModel)
     }
 
-    weak var coordinator: MainCoordinator?
     let action = PassthroughSubject<Action, Never>()
-    var actionCancellable: AnyCancellable?
+    private var actionCancellable: AnyCancellable!
     let productsValueSubject = CurrentValueSubject<[ProductViewModel], Never>([])
-
-    init() {
-
+    
+    override init(coordinator: BaseCoordinator?) {
+        
+        super.init(coordinator: coordinator)
+        
         downloadProducts()
-
+        
         actionCancellable = action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
@@ -36,11 +36,12 @@ class BuyViewModel {
         
         productsValueSubject.send(products)
     }
-
-    func processAction(_ action: Action) {
+    
+    private func processAction(_ action: Action) {
+        
         switch action {
         case .detail(let product):
-            coordinator?.showDetail(productViewModel: product)
+            (coordinator as? ProductCoordinator)?.showDetail(product: product)
         }
     }
 

@@ -10,18 +10,30 @@ import UIKit
 
 protocol Coordinator: class {
 
-    var childCoordinators: [Coordinator] { get set }
+    var parentCoordinator: BaseCoordinator? { get set }
+    var childCoordinators: [BaseCoordinator] { get set }
+    var viewModel: ViewModel? { get set }
     func start()
 }
 
 extension Coordinator {
 
-    func store(coordinator: Coordinator) {
+    func store(coordinator: BaseCoordinator) {
         childCoordinators.append(coordinator)
     }
 
-    func free(coordinator: Coordinator) {
+    func free(coordinator: BaseCoordinator) {
         childCoordinators = childCoordinators.filter { $0 !== coordinator }
     }
 
+}
+
+protocol CoordinatorDelegate: class {
+    
+    func didComplete(coordinator: BaseCoordinator?)
+}
+
+extension CoordinatorDelegate {
+    
+    func didComplete(coordinator: BaseCoordinator?) {}
 }

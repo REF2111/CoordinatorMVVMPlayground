@@ -6,21 +6,18 @@
 //  Copyright © 2020 Raphael-Alexander Berendes. All rights reserved.
 //
 
+import Combine
 import Foundation
 
-class ProductViewModel {
-
+class ProductViewModel: ViewModel {
+    
+    var coordinator: BaseCoordinator?
     private var product: Product!
-    weak var coordinator: DetailCoordinator?
-
+    
     init(product: Product) {
         self.product = product
     }
     
-    func didComplete() {
-        coordinator?.delegate?.didComplete(coordinator: coordinator)
-    }
-
     var name: String {
         product.name
     }
@@ -54,4 +51,5 @@ class ProductViewModel {
 
         return formatter.string(from: date)
     }
+    
 }

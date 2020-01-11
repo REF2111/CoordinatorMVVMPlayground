@@ -1,5 +1,5 @@
 //
-//  CreateAccountViewController.swift
+//  ProductDetailViewController.swift
 //  CoordinatorPlayground
 //
 //  Created by Raphael-Alexander Berendes on 03.01.20.
@@ -8,14 +8,18 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController, Storyboarded {
+class ProductDetailViewController: UIViewController, Storyboarded {
 
-    weak var coordinator: MainCoordinator?
+    var viewModel: ProductViewModel!
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
 
-        title = "Create"
+        title = viewModel.name
+    }
+
+    deinit {
+        print("HALLO")
     }
 }

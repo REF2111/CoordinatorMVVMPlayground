@@ -7,90 +7,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="CoordinatorPlayground" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtR-7I-opT">
-                                <rect key="frame" x="192" y="94" width="30" height="30"/>
-                                <state key="normal" title="Buy"/>
-                                <connections>
-                                    <action selector="didTapBuy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DgN-sA-Lat"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNc-JL-ssj">
-                                <rect key="frame" x="184" y="174" width="46" height="30"/>
-                                <state key="normal" title="Create"/>
-                                <connections>
-                                    <action selector="didTapCreate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Ob-K8-KSd"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="GNc-JL-ssj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="20h-7f-WAs"/>
-                            <constraint firstItem="GtR-7I-opT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LJI-pi-dJq"/>
-                            <constraint firstItem="GNc-JL-ssj" firstAttribute="top" secondItem="GtR-7I-opT" secondAttribute="bottom" constant="50" id="SuG-AI-5LB"/>
-                            <constraint firstItem="GtR-7I-opT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="aRn-Js-wxO"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="141" y="136"/>
-        </scene>
-        <!--Buy Table View Controller-->
+        <!--Products Table View Controller-->
         <scene sceneID="Mqm-x6-kGI">
             <objects>
-                <tableViewController storyboardIdentifier="BuyTableViewController" id="neI-7Y-sEB" customClass="BuyTableViewController" customModule="CoordinatorPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProductsTableViewController" id="neI-7Y-sEB" customClass="ProductsTableViewController" customModule="CoordinatorPlayground" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UzI-xu-f9A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dDU-b5-dft">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dDU-b5-dft" id="wl1-ek-9Qo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="neI-7Y-sEB" id="UDM-WK-7Hf"/>
                             <outlet property="delegate" destination="neI-7Y-sEB" id="mL4-hl-rGM"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="ER4-P6-j5n"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxN-p4-cnB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="907" y="136"/>
+            <point key="canvasLocation" x="284" y="735"/>
         </scene>
-        <!--Create Account View Controller-->
-        <scene sceneID="TjQ-fS-pNL">
-            <objects>
-                <viewController storyboardIdentifier="CreateAccountViewController" id="cfn-4F-tQw" customClass="CreateAccountViewController" customModule="CoordinatorPlayground" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lRG-3d-twH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="4tF-Ob-pYD"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fzu-Ox-qKq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1696" y="136"/>
-        </scene>
-        <!--Detail View Controller-->
+        <!--Product Detail View Controller-->
         <scene sceneID="UIi-sm-Tox">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="0aU-Z2-aU5" customClass="DetailViewController" customModule="CoordinatorPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailViewController" id="0aU-Z2-aU5" customClass="ProductDetailViewController" customModule="CoordinatorPlayground" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CCn-l1-VOk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,7 +39,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxD-Ag-hQA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2414" y="136"/>
+            <point key="canvasLocation" x="284" y="1404"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kaX-dP-5Fs">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="AAz-yU-r6Y" customClass="TabBarController" customModule="CoordinatorPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B3J-iO-IFY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwM-Jt-P0a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="53"/>
         </scene>
     </scenes>
 </document>
