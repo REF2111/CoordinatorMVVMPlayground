@@ -10,7 +10,7 @@ import UIKit
 
 class TabBarController: UITabBarController, Storyboarded {
 
-    let productCoordinator = ProductCoordinator(navigationController: UINavigationController(), parentCoordinator: nil, viewModel: ProductFlowViewModel(coordinator: nil))
+    let productCoordinator = ProductCoordinator(navigationController: UINavigationController(), parentCoordinator: nil)
     
     override func viewDidLoad() {
         

@@ -12,7 +12,6 @@ protocol Coordinator: class {
 
     var parentCoordinator: BaseCoordinator? { get set }
     var childCoordinators: [BaseCoordinator] { get set }
-    var viewModel: ViewModel? { get set }
     func start()
 }
 

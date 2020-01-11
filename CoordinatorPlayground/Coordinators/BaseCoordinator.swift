@@ -13,13 +13,11 @@ class BaseCoordinator: Coordinator, CoordinatorDelegate {
     var navigationController: UINavigationController?
     var parentCoordinator: BaseCoordinator?
     var childCoordinators : [BaseCoordinator] = []
-    var viewModel: ViewModel?
     
-    init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?, viewModel: ViewModel?) {
+    init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?) {
         
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
-        self.viewModel = viewModel
     }
 
     func start() {

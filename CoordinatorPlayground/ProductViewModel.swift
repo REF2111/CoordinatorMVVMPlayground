@@ -9,12 +9,14 @@
 import Combine
 import Foundation
 
-class ProductViewModel: ViewModel {
+class ProductViewModel: BaseViewModel {
     
-    var coordinator: BaseCoordinator?
     private var product: Product!
     
-    init(product: Product) {
+    init(coordinator: BaseCoordinator?, product: Product) {
+        
+        super.init(coordinator: coordinator)
+        
         self.product = product
     }
     

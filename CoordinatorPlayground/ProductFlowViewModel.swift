@@ -32,7 +32,7 @@ class ProductFlowViewModel: BaseViewModel {
     private func downloadProducts() {
         
         let products = Product.testProducts
-            .map { ProductViewModel(product: $0) }
+            .map { ProductViewModel(coordinator: coordinator, product: $0) }
         
         productsValueSubject.send(products)
     }

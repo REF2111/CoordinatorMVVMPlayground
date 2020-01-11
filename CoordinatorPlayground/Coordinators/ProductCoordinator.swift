@@ -13,15 +13,13 @@ class ProductCoordinator: BaseCoordinator {
     override func start() {
         
         let vc = ProductsTableViewController.instantiate()
-        viewModel?.coordinator = self
-        vc.viewModel = viewModel as? ProductFlowViewModel
+        vc.viewModel = ProductFlowViewModel(coordinator: self)
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func showDetail(product: ProductViewModel) {
         
         let vc = ProductDetailTableViewController.instantiate()
-        viewModel?.coordinator = self
         vc.viewModel = product
         navigationController?.pushViewController(vc, animated: true)
     }
