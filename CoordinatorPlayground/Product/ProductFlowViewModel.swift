@@ -28,6 +28,10 @@ class ProductFlowViewModel: BaseViewModel {
             self?.processAction(action)
         })
     }
+    
+    private var productCoordinator: ProductCoordinator {
+        coordinator as! ProductCoordinator
+    }
 
     private func downloadProducts() {
         
@@ -41,7 +45,7 @@ class ProductFlowViewModel: BaseViewModel {
         
         switch action {
         case .detail(let product):
-            (coordinator as? ProductCoordinator)?.showDetail(product: product)
+            productCoordinator.showDetail(product: product)
         }
     }
 

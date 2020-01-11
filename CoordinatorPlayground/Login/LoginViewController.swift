@@ -34,6 +34,8 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
                     self?.errorLabel.isHidden = true
                 case .wrongCredentials:
                     self?.errorLabel.isHidden = false
+                case .loggedIn:
+                    self?.dismiss(animated: true)
                 }
         }.store(in: &cancellables)
                 

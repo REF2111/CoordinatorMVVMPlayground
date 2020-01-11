@@ -14,6 +14,7 @@ class LoginViewModel: BaseViewModel {
     enum State {
         case input
         case wrongCredentials
+        case loggedIn
     }
     
     enum Action {
@@ -55,6 +56,7 @@ class LoginViewModel: BaseViewModel {
         case .login:
             if hasValidCredentials {
                 UserManager.isUserLoggedIn = true
+                state.send(.loggedIn)
             } else {
                 state.send(.wrongCredentials)
             }

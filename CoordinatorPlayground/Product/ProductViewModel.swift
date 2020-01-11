@@ -20,6 +20,10 @@ class ProductViewModel: BaseViewModel {
         self.product = product
     }
     
+    private var productCoordiantor: ProductCoordinator {
+        coordinator as! ProductCoordinator
+    }
+    
     var name: String {
         product.name
     }
@@ -56,7 +60,7 @@ class ProductViewModel: BaseViewModel {
     
     func buy() {
         
-        (coordinator as? ProductCoordinator)?.buy(product: product, completion: { success in
+        productCoordiantor.buy(product: product, completion: { success in
             print(success)
         })
     }
