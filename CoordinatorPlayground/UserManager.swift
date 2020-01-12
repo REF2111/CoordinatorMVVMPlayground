@@ -11,4 +11,29 @@ import Foundation
 class UserManager {
     
     static var isUserLoggedIn = false
+    
+    static var username: String {
+        UserDefaults.standard.value(forKey: "username") as! String
+    }
+    
+    static var password: String {
+        UserDefaults.standard.value(forKey: "password") as! String
+    }
+    
+    static func register(withUsername username: String,
+                         andPassword password: String) {
+        
+        UserDefaults.standard.set(username, forKey: "username")
+        UserDefaults.standard.set(password, forKey: "password")
+    }
+    
+    static func login(withUsername username: String,
+                         andPassword password: String) -> Bool {
+        isUserLoggedIn =
+            UserManager.username == username &&
+            UserManager.password == password
+        
+        return isUserLoggedIn
+    }
+
 }

@@ -27,6 +27,8 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
         
         super.viewDidLoad()
         
+        title = "Login"
+        
         viewModel.state
             .sink { [weak self] state in
                 switch state {
@@ -55,6 +57,7 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
     }
     
     @IBAction func didTapRegisterButton(_ sender: UIButton) {
+        viewModel.action.send(.register)
     }
     
 }

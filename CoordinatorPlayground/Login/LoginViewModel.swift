@@ -19,8 +19,13 @@ class LoginViewModel: BaseViewModel {
     
     enum Action {
         case login
+        case register
     }
     
+    private var loginCoordinator: LoginCoordinator {
+        coordinator as! LoginCoordinator
+    }
+        
     let state = CurrentValueSubject<State, Never>(.input)
     let action = PassthroughSubject<Action, Never>()
     @Published var username = "" { didSet { usernameSubject.send(username) }}
@@ -54,12 +59,13 @@ class LoginViewModel: BaseViewModel {
         
         switch action {
         case .login:
-            if hasValidCredentials {
-                UserManager.isUserLoggedIn = true
+            if UserManager.login(withUsername: username, andPassword: password) {
                 state.send(.loggedIn)
             } else {
                 state.send(.wrongCredentials)
             }
+        case .register:
+            loginCoordinator.showRegistration()
         }
     }
     

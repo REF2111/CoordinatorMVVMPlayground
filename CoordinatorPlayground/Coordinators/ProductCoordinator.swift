@@ -37,7 +37,7 @@ class ProductCoordinator: BaseCoordinator {
         
         guard let viewController = navigationController?.topViewController else { return }
         
-        let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self, viewController: viewController)
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self, presentingViewController: viewController)
         store(coordinator: loginCoordinator)
         
         loginCoordinator.start()
