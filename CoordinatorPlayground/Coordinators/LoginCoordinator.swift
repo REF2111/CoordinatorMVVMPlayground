@@ -6,12 +6,16 @@
 //  Copyright © 2020 Raphael-Alexander Berendes. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 class LoginCoordinator: BaseCoordinator {
     
     private var presentingViewController: UIViewController?
     private weak var loginViewController: LoginViewController!
+    private weak var registrationViewController: RegistrationViewController!
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?, presentingViewController: UIViewController?) {
         
@@ -21,10 +25,10 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     override func start() {
-                
+        
         loginViewController = LoginViewController.instantiate()
         loginViewController.viewModel = LoginViewModel(coordinator: self)
-
+        
         if let presentingViewController = presentingViewController {
             let loginNavigationController = UINavigationController(rootViewController: loginViewController)
             presentingViewController.present(loginNavigationController, animated: true)
@@ -35,10 +39,23 @@ class LoginCoordinator: BaseCoordinator {
     
     func showRegistration() {
         
-        let vc = RegistrationViewController.instantiate()
-        vc.viewModel = RegistrationViewModel(coordinator: self)
+        let viewModel = RegistrationViewModel(coordinator: self)
         
-        let registrationNavigationController = UINavigationController(rootViewController: vc)
+        registrationViewController = RegistrationViewController.instantiate()
+        registrationViewController.viewModel = viewModel
+        
+        let registrationNavigationController = UINavigationController(rootViewController: registrationViewController)
         loginViewController?.present(registrationNavigationController, animated: true)
+        
+        viewModel.action
+            .sink { [weak self] action in
+                if action == .register {
+                    self?.loginViewController.viewModel.username = viewModel.username
+                    self?.loginViewController.usernameTextField.text = viewModel.username
+                    self?.loginViewController.viewModel.password = viewModel.firstPassword
+                    self?.loginViewController.passwordTextField.text = viewModel.firstPassword
+                }
+        }.store(in: &cancellables)
     }
+
 }
