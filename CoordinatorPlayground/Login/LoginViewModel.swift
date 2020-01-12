@@ -33,7 +33,7 @@ class LoginViewModel: BaseViewModel {
     
     private let usernameSubject = PassthroughSubject<String, Never>()
     private let passwordSubject = PassthroughSubject<String, Never>()
-    private var cancellables = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
     
     override init(coordinator: BaseCoordinator?) {
         
@@ -42,17 +42,17 @@ class LoginViewModel: BaseViewModel {
         action
             .sink { [weak self] action in
                 self?.processAction(action)
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         usernameSubject
             .sink { [weak self] text in
                 self?.state.send(.input)
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         passwordSubject
             .sink { [weak self] text in
                 self?.state.send(.input)
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
     }
         
     private func processAction(_ action: Action) {

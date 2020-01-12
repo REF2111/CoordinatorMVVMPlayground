@@ -14,11 +14,6 @@ class RegistrationViewModel: BaseViewModel {
         case register
     }
     
-    enum State {
-        case input
-        case registered
-    }
-    
     enum UsernameState {
         case input
         case valid
@@ -43,7 +38,6 @@ class RegistrationViewModel: BaseViewModel {
     }
     
     let action = PassthroughSubject<Action, Never>()
-    let state = CurrentValueSubject<State, Never>(.input)
     let usernameState = CurrentValueSubject<UsernameState, Never>(.input)
     let mailState = CurrentValueSubject<MailState, Never>(.input)
     let passwordState = CurrentValueSubject<PasswordState, Never>(.input)
@@ -51,15 +45,22 @@ class RegistrationViewModel: BaseViewModel {
 
     @Published var username = "" { didSet { usernameSubject.send(username) }}
     @Published var email = "" { didSet { emailSubject.send(email) }}
-    @Published var  firstPassword = "" { didSet { firstPasswordSubject.send(firstPassword) }}
-    @Published var  secondPassword = "" { didSet { secondPasswordSubject.send(secondPassword) }}
+    @Published var firstPassword = "" { didSet { firstPasswordSubject.send(firstPassword) }}
+    @Published var secondPassword = "" { didSet { secondPasswordSubject.send(secondPassword) }}
     
     private let usernameSubject = PassthroughSubject<String, Never>()
     private let emailSubject = PassthroughSubject<String, Never>()
     private let firstPasswordSubject = PassthroughSubject<String, Never>()
     private let secondPasswordSubject = PassthroughSubject<String, Never>()
     
-    private var cancellables = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
+    
+    // Wenn einem Publisher zwei mal subscribed wird, dann gibt es ein Speicherleck (Bug?)
+    deinit {
+        for subscriber in subscribers {
+            subscriber.cancel()
+        }
+    }
     
     override init(coordinator: BaseCoordinator?) {
         
@@ -68,27 +69,27 @@ class RegistrationViewModel: BaseViewModel {
         action
             .sink { [weak self] action in
                 self?.processAction(action)
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         usernameSubject
             .sink { [weak self] text in
                 self?.usernameState.send(text.isValidUsername() ? .valid: .error)
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         emailSubject
             .sink { [weak self] text in
                 self?.mailState.send(text.isValidMailAddress() ? .valid: .error)
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         firstPasswordSubject
             .sink { [weak self] text in
                 self?.processPasswords(first: text, second: String())
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         Publishers.CombineLatest(firstPasswordSubject, secondPasswordSubject)
             .sink { [weak self] (first: String, second: String) in
                 self?.processPasswords(first: first, second: second)
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         Publishers.CombineLatest3(usernameState, mailState, passwordState)
             .map { (nameState: UsernameState,
@@ -97,7 +98,7 @@ class RegistrationViewModel: BaseViewModel {
                 nameState == .valid && mailState == .valid && passwordState == .equal
         }
         .subscribe(hasValidCredentials)
-        .store(in: &cancellables)
+        .store(in: &subscribers)
     }
     
     private func processAction(_ action: Action) {
@@ -105,7 +106,7 @@ class RegistrationViewModel: BaseViewModel {
         switch action {
         case .register:
             UserManager.register(withUsername: username, andPassword: firstPassword)
-            state.send(.registered)
+            loginCoordinator.didRegister(username: username, password: firstPassword)
         }
     }
         

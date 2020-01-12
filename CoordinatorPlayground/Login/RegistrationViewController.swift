@@ -21,7 +21,7 @@ class RegistrationViewController: UIViewController, LoginFlow, Storyboarded {
     @IBOutlet weak var confirmationButton: UIButton!
     
     var viewModel: RegistrationViewModel!
-    private var cancellables = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
         
     override func viewDidLoad() {
         
@@ -29,22 +29,15 @@ class RegistrationViewController: UIViewController, LoginFlow, Storyboarded {
         
         title = "Registration"
         
-        viewModel.state
-            .sink { [weak self] state in
-                if state == .registered {
-                    self?.dismiss(animated: true)
-                }
-        }.store(in: &cancellables)
-        
         viewModel.usernameState
             .sink { [weak self] state in
                 self?.usernameErrorLabel.isHidden = state != .error
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         viewModel.mailState
             .sink { [weak self] state in
                 self?.mailAddressErrorLabel.isHidden = state != .error
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         viewModel.passwordState
             .sink { [weak self] state in
@@ -60,31 +53,32 @@ class RegistrationViewController: UIViewController, LoginFlow, Storyboarded {
                     self?.passwordErrorLabel.text = "Passwords Not Equal"
                     self?.passwordErrorLabel.isHidden = false
                 }
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
         
         viewModel.hasValidCredentials
+            .receive(on: DispatchQueue.main)
             .assign(to: \.isEnabled, on: confirmationButton)
-            .store(in: &cancellables)
+            .store(in: &subscribers)
         
         usernameTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.username, on: viewModel)
-            .store(in: &cancellables)
+            .store(in: &subscribers)
         
         mailTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.email, on: viewModel)
-            .store(in: &cancellables)
+            .store(in: &subscribers)
         
         firstPasswordTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.firstPassword, on: viewModel)
-            .store(in: &cancellables)
+            .store(in: &subscribers)
         
         secondPasswordTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.secondPassword, on: viewModel)
-            .store(in: &cancellables)
+            .store(in: &subscribers)
     }
     
     @IBAction func didTapRegistrationButton(_ sender: UIButton) {

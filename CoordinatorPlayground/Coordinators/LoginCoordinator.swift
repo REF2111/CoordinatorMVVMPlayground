@@ -15,7 +15,7 @@ class LoginCoordinator: BaseCoordinator {
     private weak var loginViewController: LoginViewController!
     private weak var registrationViewController: RegistrationViewController!
     
-    private var cancellables = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
     
     init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?, presentingViewController: UIViewController?) {
         
@@ -38,24 +38,21 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     func showRegistration() {
-        
-        let viewModel = RegistrationViewModel(coordinator: self)
-        
+    
         registrationViewController = RegistrationViewController.instantiate()
-        registrationViewController.viewModel = viewModel
-        
-        let registrationNavigationController = UINavigationController(rootViewController: registrationViewController)
+        registrationViewController.viewModel = RegistrationViewModel(coordinator: self)
+        let registrationNavigationController =  UINavigationController(rootViewController: registrationViewController)
         loginViewController?.present(registrationNavigationController, animated: true)
+    }
+            
+    func didRegister(username: String, password: String) {
         
-        viewModel.action
-            .sink { [weak self] action in
-                if action == .register {
-                    self?.loginViewController.viewModel.username = viewModel.username
-                    self?.loginViewController.usernameTextField.text = viewModel.username
-                    self?.loginViewController.viewModel.password = viewModel.firstPassword
-                    self?.loginViewController.passwordTextField.text = viewModel.firstPassword
-                }
-        }.store(in: &cancellables)
+        loginViewController.viewModel.username = username
+        loginViewController.usernameTextField.text = username
+        loginViewController.viewModel.password = password
+        loginViewController.passwordTextField.text = password
+        
+        registrationViewController.dismiss(animated: true)
     }
 
 }

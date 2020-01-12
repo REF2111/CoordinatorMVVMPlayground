@@ -17,7 +17,7 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
     @IBOutlet weak var errorLabel: UILabel!
     
     var viewModel: LoginViewModel!
-    private var cancellables = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
     
     deinit {
         viewModel.didComplete()
@@ -39,17 +39,17 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
                 case .loggedIn:
                     self?.dismiss(animated: true)
                 }
-        }.store(in: &cancellables)
+        }.store(in: &subscribers)
                 
         usernameTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.username, on: viewModel)
-            .store(in: &cancellables)
+            .store(in: &subscribers)
         
         passwordTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.password, on: viewModel)
-            .store(in: &cancellables)
+            .store(in: &subscribers)
     }
     
     @IBAction func didTapLoginButton(_ sender: UIButton) {

@@ -12,7 +12,7 @@ import UIKit
 class ProductsTableViewController: UITableViewController, ProductFlow, Storyboarded {
 
     var viewModel: ProductFlowViewModel!
-    private var productCancellable: AnyCancellable?
+    private var productSubscriber: AnyCancellable?
     private var products = [ProductViewModel]()
 
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class ProductsTableViewController: UITableViewController, ProductFlow, Storyboar
         title = "Products"
         tabBarItem = UITabBarItem(title: "Products", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
 
-        productCancellable = viewModel.productsValueSubject
+        productSubscriber = viewModel.productsValueSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] products in
                 self?.products = products

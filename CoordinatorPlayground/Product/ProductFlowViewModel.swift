@@ -15,7 +15,7 @@ class ProductFlowViewModel: BaseViewModel {
     }
 
     let action = PassthroughSubject<Action, Never>()
-    private var actionCancellable: AnyCancellable!
+    private var actionSubscriber: AnyCancellable!
     let productsValueSubject = CurrentValueSubject<[ProductViewModel], Never>([])
     
     override init(coordinator: BaseCoordinator?) {
@@ -24,7 +24,7 @@ class ProductFlowViewModel: BaseViewModel {
         
         downloadProducts()
         
-        actionCancellable = action.sink(receiveValue: { [weak self] action in
+        actionSubscriber = action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
     }
