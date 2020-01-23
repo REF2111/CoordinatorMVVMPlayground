@@ -20,8 +20,8 @@ struct Product: Decodable {
         
         [
             Product(name: "MacBook", price: 229990, decimalPlaces: 2, currency: "EUR", availableSince: "1539115256"),
-            Product(name: "iPhone X", price: 89000, decimalPlaces: 2, currency: "EUR", availableSince: "1506801656"),
-            Product(name: "AirPods 2", price: 29999, decimalPlaces: 2, currency: "USD", availableSince: "1575925256"),
+            Product(name: "iPhone X", price: 89000, decimalPlaces: 2, currency: "EUR", availableSince: "1505206800"),
+            Product(name: "AirPods 2", price: 29999, decimalPlaces: 2, currency: "USD", availableSince: "1572426000"),
         ]
     }
 }
