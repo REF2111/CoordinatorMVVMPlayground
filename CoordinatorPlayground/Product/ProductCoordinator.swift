@@ -27,7 +27,7 @@ class ProductCoordinator: BaseCoordinator {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func buy(product: Product, completion: (_ success: Bool) -> Void) {
+    func buy(product: Product) {
                 
         if UserManager.isUserLoggedIn {
             let alert = UIAlertController(title: "Purchase successful!", message: "Have fun with your \(product.name)", preferredStyle: .alert)

@@ -60,9 +60,7 @@ class ProductViewModel: BaseViewModel {
     
     func buy() {
         
-        productCoordiantor.buy(product: product, completion: { success in
-            print(success)
-        })
+        productCoordiantor.buy(product: product)
     }
     
 }
