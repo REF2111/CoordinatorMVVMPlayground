@@ -25,6 +25,10 @@
 		60D755DF23CB3DD300F49D29 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755DE23CB3DD300F49D29 /* RegistrationViewController.swift */; };
 		60D755E123CB3F8800F49D29 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755E023CB3F8800F49D29 /* RegistrationViewModel.swift */; };
 		6444996F23C3971E00DE8795 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6444996E23C3971E00DE8795 /* ProductViewModel.swift */; };
+		64573A9623D9F4BA009E5476 /* OtherTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64573A9523D9F4BA009E5476 /* OtherTabCoordinator.swift */; };
+		64573A9823D9F4DF009E5476 /* OtherTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64573A9723D9F4DF009E5476 /* OtherTab.storyboard */; };
+		64573A9A23D9F505009E5476 /* OtherTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64573A9923D9F505009E5476 /* OtherTabViewController.swift */; };
+		64573A9C23D9F540009E5476 /* OtherTabFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64573A9B23D9F540009E5476 /* OtherTabFlow.swift */; };
 		64F3B00D23BF878D00787F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B00C23BF878D00787F49 /* AppDelegate.swift */; };
 		64F3B00F23BF878D00787F49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F3B00E23BF878D00787F49 /* SceneDelegate.swift */; };
 		64F3B01423BF878D00787F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64F3B01223BF878D00787F49 /* Main.storyboard */; };
@@ -57,6 +61,10 @@
 		60D755DE23CB3DD300F49D29 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		60D755E023CB3F8800F49D29 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		6444996E23C3971E00DE8795 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		64573A9523D9F4BA009E5476 /* OtherTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTabCoordinator.swift; sourceTree = "<group>"; };
+		64573A9723D9F4DF009E5476 /* OtherTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OtherTab.storyboard; sourceTree = "<group>"; };
+		64573A9923D9F505009E5476 /* OtherTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTabViewController.swift; sourceTree = "<group>"; };
+		64573A9B23D9F540009E5476 /* OtherTabFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTabFlow.swift; sourceTree = "<group>"; };
 		64F3B00923BF878D00787F49 /* CoordinatorPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F3B00C23BF878D00787F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64F3B00E23BF878D00787F49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,20 +91,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6008A33F23C7BFF000396782 /* Coordinators */ = {
+		6008A33F23C7BFF000396782 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				64F3B02023BF884800787F49 /* Coordinator.swift */,
 				64F3B02A23BF939B00787F49 /* BaseCoordinator.swift */,
-				603D7E1423C9F7C500EE2A10 /* ProductCoordinator.swift */,
-				603CFA1923CA142700883397 /* LoginCoordinator.swift */,
 			);
-			path = Coordinators;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		603D7E1323C9F62600EE2A10 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				603D7E1423C9F7C500EE2A10 /* ProductCoordinator.swift */,
 				60D755D023CA6E8B00F49D29 /* ProductFlow.swift */,
 				64F3B02623BF8EA700787F49 /* ProductsTableViewController.swift */,
 				64F3B03023BF965C00787F49 /* ProductDetailTableViewController.swift */,
@@ -120,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				60D755CC23CA6D2700F49D29 /* Login.storyboard */,
+				603CFA1923CA142700883397 /* LoginCoordinator.swift */,
 				60D755CA23CA6D0400F49D29 /* LoginViewController.swift */,
 				60D755CE23CA6D9100F49D29 /* LoginFlow.swift */,
 				60D755D523CA6F4F00F49D29 /* LoginViewModel.swift */,
@@ -148,6 +156,17 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		64573A9423D9F478009E5476 /* OtherTab */ = {
+			isa = PBXGroup;
+			children = (
+				64573A9723D9F4DF009E5476 /* OtherTab.storyboard */,
+				64573A9523D9F4BA009E5476 /* OtherTabCoordinator.swift */,
+				64573A9B23D9F540009E5476 /* OtherTabFlow.swift */,
+				64573A9923D9F505009E5476 /* OtherTabViewController.swift */,
+			);
+			path = OtherTab;
+			sourceTree = "<group>";
+		};
 		64F3B00023BF878D00787F49 = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +186,13 @@
 		64F3B00B23BF878D00787F49 /* CoordinatorPlayground */ = {
 			isa = PBXGroup;
 			children = (
-				60D755D723CA7D4800F49D29 /* Extension */,
 				60D755D223CA6ED100F49D29 /* Main */,
+				6008A33F23C7BFF000396782 /* Coordinator */,
 				603D7E1823C9FCAF00EE2A10 /* ViewModel */,
 				603D7E1323C9F62600EE2A10 /* Product */,
+				64573A9423D9F478009E5476 /* OtherTab */,
 				60D755C923CA6CDC00F49D29 /* Login */,
-				6008A33F23C7BFF000396782 /* Coordinators */,
+				60D755D723CA7D4800F49D29 /* Extension */,
 				64F3B00C23BF878D00787F49 /* AppDelegate.swift */,
 				64F3B00E23BF878D00787F49 /* SceneDelegate.swift */,
 				64F3B01523BF879000787F49 /* Assets.xcassets */,
@@ -245,6 +265,7 @@
 				60D755CD23CA6D2700F49D29 /* Login.storyboard in Resources */,
 				64F3B01923BF879000787F49 /* LaunchScreen.storyboard in Resources */,
 				64F3B01623BF879000787F49 /* Assets.xcassets in Resources */,
+				64573A9823D9F4DF009E5476 /* OtherTab.storyboard in Resources */,
 				64F3B01423BF878D00787F49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,8 +288,10 @@
 				64F3B03123BF965C00787F49 /* ProductDetailTableViewController.swift in Sources */,
 				603D7E1A23C9FCCC00EE2A10 /* ViewModel.swift in Sources */,
 				603D7E1523C9F7C500EE2A10 /* ProductCoordinator.swift in Sources */,
+				64573A9A23D9F505009E5476 /* OtherTabViewController.swift in Sources */,
 				64F3B02323BF891700787F49 /* Storyboarded.swift in Sources */,
 				60D755DB23CA906B00F49D29 /* String+Extension.swift in Sources */,
+				64573A9623D9F4BA009E5476 /* OtherTabCoordinator.swift in Sources */,
 				64FEECBB23C38D6A00B5738F /* Product.swift in Sources */,
 				64F3B00D23BF878D00787F49 /* AppDelegate.swift in Sources */,
 				60D755CB23CA6D0400F49D29 /* LoginViewController.swift in Sources */,
@@ -276,6 +299,7 @@
 				603CFA1A23CA142700883397 /* LoginCoordinator.swift in Sources */,
 				60D755DF23CB3DD300F49D29 /* RegistrationViewController.swift in Sources */,
 				60D755D923CA7D5B00F49D29 /* UITextField+Extension.swift in Sources */,
+				64573A9C23D9F540009E5476 /* OtherTabFlow.swift in Sources */,
 				60D755E123CB3F8800F49D29 /* RegistrationViewModel.swift in Sources */,
 				64F3B00F23BF878D00787F49 /* SceneDelegate.swift in Sources */,
 				60D755D123CA6E8B00F49D29 /* ProductFlow.swift in Sources */,

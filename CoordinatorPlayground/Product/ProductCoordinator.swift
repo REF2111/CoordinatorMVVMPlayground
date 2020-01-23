@@ -13,7 +13,10 @@ class ProductCoordinator: BaseCoordinator {
     override func start() {
         
         let vc = ProductsTableViewController.instantiate()
+        vc.title = "Products"
+        vc.tabBarItem = UITabBarItem(title: "Products", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
         vc.viewModel = ProductFlowViewModel(coordinator: self)
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     

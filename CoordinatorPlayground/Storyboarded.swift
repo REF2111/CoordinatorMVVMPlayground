@@ -50,3 +50,16 @@ extension Storyboarded where Self: LoginFlow {
         return storyboard.instantiateViewController(withIdentifier: className) as! Self
     }
 }
+
+extension Storyboarded where Self: OtherTabFlow {
+    static func instantiate() -> Self {
+
+        let className = String(describing: self.self)
+
+        // load our storyboard
+        let storyboard = UIStoryboard(name: "OtherTab", bundle: Bundle.main)
+
+        // instantiate a view controller with that identifier, and force cast as the type that was requested
+        return storyboard.instantiateViewController(withIdentifier: className) as! Self
+    }
+}

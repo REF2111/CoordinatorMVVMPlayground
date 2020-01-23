@@ -19,9 +19,6 @@ class ProductsTableViewController: UITableViewController, ProductFlow, Storyboar
 
         super.viewDidLoad()
 
-        title = "Products"
-        tabBarItem = UITabBarItem(title: "Products", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
-
         productSubscriber = viewModel.productsValueSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] products in

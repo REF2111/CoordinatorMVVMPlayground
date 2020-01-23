@@ -11,12 +11,17 @@ import UIKit
 class TabBarController: UITabBarController, MainFlow, Storyboarded {
 
     let productCoordinator = ProductCoordinator(navigationController: UINavigationController(), parentCoordinator: nil)
+    let otherTabCoordinator = OtherTabCoordinator(navigationController: UINavigationController(), parentCoordinator: nil)
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         productCoordinator.start()
-        viewControllers = [productCoordinator.navigationController!]
+        otherTabCoordinator.start()
+        viewControllers = [
+            productCoordinator.navigationController!,
+            otherTabCoordinator.navigationController!
+        ]
     }
 }
