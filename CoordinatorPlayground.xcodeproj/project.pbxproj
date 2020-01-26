@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		603CFA1423CA029200883397 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1323CA029200883397 /* TabBarController.swift */; };
-		603CFA1623CA07F200883397 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1523CA07F200883397 /* BaseViewModel.swift */; };
 		603CFA1823CA138200883397 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1723CA138200883397 /* UserManager.swift */; };
 		603CFA1A23CA142700883397 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CFA1923CA142700883397 /* LoginCoordinator.swift */; };
 		603D7E1523C9F7C500EE2A10 /* ProductCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603D7E1423C9F7C500EE2A10 /* ProductCoordinator.swift */; };
-		603D7E1A23C9FCCC00EE2A10 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603D7E1923C9FCCC00EE2A10 /* ViewModel.swift */; };
 		60D755CB23CA6D0400F49D29 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755CA23CA6D0400F49D29 /* LoginViewController.swift */; };
 		60D755CD23CA6D2700F49D29 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D755CC23CA6D2700F49D29 /* Login.storyboard */; };
 		60D755CF23CA6D9100F49D29 /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D755CE23CA6D9100F49D29 /* LoginFlow.swift */; };
@@ -40,11 +38,9 @@
 
 /* Begin PBXFileReference section */
 		603CFA1323CA029200883397 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		603CFA1523CA07F200883397 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		603CFA1723CA138200883397 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		603CFA1923CA142700883397 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		603D7E1423C9F7C500EE2A10 /* ProductCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCoordinator.swift; sourceTree = "<group>"; };
-		603D7E1923C9FCCC00EE2A10 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		60D755CA23CA6D0400F49D29 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		60D755CC23CA6D2700F49D29 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		60D755CE23CA6D9100F49D29 /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
@@ -102,15 +98,6 @@
 				64FEECBA23C38D6A00B5738F /* Product.swift */,
 			);
 			path = Product;
-			sourceTree = "<group>";
-		};
-		603D7E1823C9FCAF00EE2A10 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				603D7E1923C9FCCC00EE2A10 /* ViewModel.swift */,
-				603CFA1523CA07F200883397 /* BaseViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		60D755C923CA6CDC00F49D29 /* Login */ = {
@@ -176,7 +163,6 @@
 			children = (
 				60D755D223CA6ED100F49D29 /* Main */,
 				6008A33F23C7BFF000396782 /* Coordinator */,
-				603D7E1823C9FCAF00EE2A10 /* ViewModel */,
 				603D7E1323C9F62600EE2A10 /* Product */,
 				64573A9423D9F478009E5476 /* OtherTab */,
 				60D755C923CA6CDC00F49D29 /* Login */,
@@ -270,9 +256,7 @@
 				603CFA1823CA138200883397 /* UserManager.swift in Sources */,
 				603CFA1423CA029200883397 /* TabBarController.swift in Sources */,
 				64F3B02B23BF939B00787F49 /* BaseCoordinator.swift in Sources */,
-				603CFA1623CA07F200883397 /* BaseViewModel.swift in Sources */,
 				64F3B03123BF965C00787F49 /* ProductDetailTableViewController.swift in Sources */,
-				603D7E1A23C9FCCC00EE2A10 /* ViewModel.swift in Sources */,
 				603D7E1523C9F7C500EE2A10 /* ProductCoordinator.swift in Sources */,
 				64573A9A23D9F505009E5476 /* OtherTabViewController.swift in Sources */,
 				64F3B02323BF891700787F49 /* Storyboarded.swift in Sources */,

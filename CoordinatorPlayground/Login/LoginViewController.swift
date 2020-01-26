@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
     var coordinator: LoginCoordinator!
     
     deinit {
-        coordinator.parentCoordinator?.didComplete(coordinator: coordinator)
+        coordinator.didComplete()
     }
     
     override func viewDidLoad() {
