@@ -39,7 +39,7 @@ class ProductCoordinator: BaseCoordinator {
         }
     }
     
-    func startLoginFlow() {
+    private func startLoginFlow() {
         
         guard let viewController = navigationController?.topViewController else { return }
         
