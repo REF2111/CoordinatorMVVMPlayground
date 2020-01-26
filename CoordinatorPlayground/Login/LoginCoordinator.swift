@@ -17,7 +17,7 @@ class LoginCoordinator: BaseCoordinator {
     
     private var subscribers = Set<AnyCancellable>()
     
-    init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?, presentingViewController: UIViewController?) {
+    init(navigationController: UINavigationController, parentCoordinator: BaseCoordinator?, presentingViewController: UIViewController?) {
         
         super.init(navigationController: navigationController, parentCoordinator: parentCoordinator)
         
@@ -33,7 +33,7 @@ class LoginCoordinator: BaseCoordinator {
             let loginNavigationController = UINavigationController(rootViewController: loginViewController)
             presentingViewController.present(loginNavigationController, animated: true)
         } else {
-            navigationController?.pushViewController(loginViewController, animated: true)
+            navigationController.pushViewController(loginViewController, animated: true)
         }
     }
     

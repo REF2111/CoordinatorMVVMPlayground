@@ -10,11 +10,11 @@ import UIKit
 
 class BaseCoordinator: Coordinator {
     
-    var navigationController: UINavigationController?
+    var navigationController: UINavigationController
     var parentCoordinator: BaseCoordinator?
     var childCoordinators : [BaseCoordinator] = []
     
-    init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?) {
+    init(navigationController: UINavigationController, parentCoordinator: BaseCoordinator?) {
         
         self.navigationController = navigationController
         self.parentCoordinator = parentCoordinator
