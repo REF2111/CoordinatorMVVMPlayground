@@ -38,7 +38,7 @@ class LoginCoordinator: BaseCoordinator {
     func showRegistration() {
         
         registrationViewController = RegistrationViewController.instantiate()
-        let registrationNavigationController =  UINavigationController(rootViewController: registrationViewController)
+        let registrationNavigationController = UINavigationController(rootViewController: registrationViewController)
         loginViewController?.present(registrationNavigationController, animated: true)
     }
     
