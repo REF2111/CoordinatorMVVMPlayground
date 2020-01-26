@@ -17,7 +17,7 @@ class ProductCoordinator: BaseCoordinator {
         vc.tabBarItem = UITabBarItem(title: "Products", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
         vc.coordinator = self
         
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func showDetail(product: Product) {
@@ -25,7 +25,7 @@ class ProductCoordinator: BaseCoordinator {
         let vc = ProductDetailTableViewController.instantiate()
         vc.coordinator = self
         vc.product = product
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func buy(product: Product) {
@@ -34,7 +34,7 @@ class ProductCoordinator: BaseCoordinator {
             let alert = UIAlertController(title: "Purchase successful!", message: "Have fun with your \(product.name)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Aye", style: .default))
             
-            navigationController?.topViewController?.present(alert, animated: true)
+            navigationController.topViewController?.present(alert, animated: true)
         } else {
             startLoginFlow()
         }
@@ -42,7 +42,7 @@ class ProductCoordinator: BaseCoordinator {
     
     private func startLoginFlow() {
         
-        guard let viewController = navigationController?.topViewController else { return }
+        guard let viewController = navigationController.topViewController else { return }
         
         let loginCoordinator = LoginCoordinator(navigationController: navigationController, parentCoordinator: self, presentingViewController: viewController)
         store(coordinator: loginCoordinator)

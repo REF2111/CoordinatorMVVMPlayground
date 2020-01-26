@@ -16,7 +16,7 @@ class OtherTabCoordinator: BaseCoordinator {
         vc.title = "Other Tab"
         vc.tabBarItem = UITabBarItem(title: "Other", image: UIImage(systemName: "ellipsis.circle"), selectedImage: UIImage(systemName: "ellipsis.circle.fill"))
 
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: true)
     }
 
 }
