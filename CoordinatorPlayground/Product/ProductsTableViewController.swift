@@ -11,22 +11,47 @@ import UIKit
 
 class ProductsTableViewController: UITableViewController, ProductFlow, Storyboarded {
 
-    var viewModel: ProductFlowViewModel!
-    private var productSubscriber: AnyCancellable?
-    private var products = [ProductViewModel]()
+    var coordinator: ProductCoordinator?
+    private var products = [Product]()
 
     override func viewDidLoad() {
 
         super.viewDidLoad()
 
-        productSubscriber = viewModel.productsValueSubject
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] products in
-                self?.products = products
-                self?.tableView.reloadData()
-        }
+        products = Product.testProducts
+        tableView.reloadData()
     }
+        
+    private func priceString(forProduct product: Product) -> String {
+        
+        var price = Float(product.price)
+        let decimalPlaces = Float(product.decimalPlaces)
+        
+        if product.decimalPlaces != .zero {
+            price = price / powf(10, decimalPlaces)
+        }
+        
+        let formatter = NumberFormatter()
+        
+        formatter.numberStyle = .currency
+        formatter.currencyCode = product.currency
+        formatter.minimumFractionDigits = product.decimalPlaces
+        formatter.maximumFractionDigits = product.decimalPlaces
+        
+        return formatter.string(for: price) ?? formatter.string(for: 0)!
+    }
+    
+    private func dateString(forProduct product: Product) -> String {
 
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+
+        let timestamp = Double(product.availableSince)!
+        let date = Date(timeIntervalSince1970: timestamp)
+
+        return formatter.string(from: date)
+    }
+    
     // MARK: TableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         products.count
@@ -40,14 +65,16 @@ class ProductsTableViewController: UITableViewController, ProductFlow, Storyboar
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = """
         \(product.name)
-        Price: \(product.priceString)
-        Available since: \(product.dateString)
+        Price: \(priceString(forProduct: product))
+        Available since: \(dateString(forProduct: product))
         """
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.action.send(.detail(products[indexPath.row]))
+
+        let product = products[indexPath.row]
+        coordinator?.showDetail(product: product)
     }
 }

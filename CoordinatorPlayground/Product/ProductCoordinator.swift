@@ -15,15 +15,16 @@ class ProductCoordinator: BaseCoordinator {
         let vc = ProductsTableViewController.instantiate()
         vc.title = "Products"
         vc.tabBarItem = UITabBarItem(title: "Products", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
-        vc.viewModel = ProductFlowViewModel(coordinator: self)
+        vc.coordinator = self
         
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showDetail(product: ProductViewModel) {
+    func showDetail(product: Product) {
         
         let vc = ProductDetailTableViewController.instantiate()
-        vc.viewModel = product
+        vc.coordinator = self
+        vc.product = product
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -39,7 +40,7 @@ class ProductCoordinator: BaseCoordinator {
         }
     }
     
-    func startLoginFlow() {
+    private func startLoginFlow() {
         
         guard let viewController = navigationController?.topViewController else { return }
         

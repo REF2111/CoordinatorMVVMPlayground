@@ -21,10 +21,10 @@ class ProductDetailTableViewDataSource {
         case availableSince
     }
     
-    private var viewModel: ProductViewModel!
+    private var product: Product!
     
-    init(viewModel: ProductViewModel) {
-        self.viewModel = viewModel
+    init(product: Product) {
+        self.product = product
     }
     
     var numberOfSections: Int {
@@ -45,15 +45,46 @@ class ProductDetailTableViewDataSource {
 class ProductDetailTableViewController: UITableViewController, ProductFlow, Storyboarded {
     
     private var dataSource: ProductDetailTableViewDataSource!
-    var viewModel: ProductViewModel!
+    var coordinator: ProductCoordinator?
+    var product: Product!
         
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        title = viewModel.name
+        title = product.name
         
-        self.dataSource = ProductDetailTableViewDataSource(viewModel: viewModel)
+        self.dataSource = ProductDetailTableViewDataSource(product: product)
+    }
+    
+    private func priceString(forProduct product: Product) -> String {
+        
+        var price = Float(product.price)
+        let decimalPlaces = Float(product.decimalPlaces)
+        
+        if product.decimalPlaces != .zero {
+            price = price / powf(10, decimalPlaces)
+        }
+        
+        let formatter = NumberFormatter()
+        
+        formatter.numberStyle = .currency
+        formatter.currencyCode = product.currency
+        formatter.minimumFractionDigits = product.decimalPlaces
+        formatter.maximumFractionDigits = product.decimalPlaces
+        
+        return formatter.string(for: price) ?? formatter.string(for: 0)!
+    }
+    
+    private func dateString(forProduct product: Product) -> String {
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+
+        let timestamp = Double(product.availableSince)!
+        let date = Date(timeIntervalSince1970: timestamp)
+
+        return formatter.string(from: date)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,18 +103,19 @@ class ProductDetailTableViewController: UITableViewController, ProductFlow, Stor
             
             switch ProductDetailTableViewDataSource.ProductInfo(rawValue: indexPath.row)! {
             case .name:
-                cell.textLabel?.text = viewModel.name
+                cell.textLabel?.text = product.name
             case .price:
-                cell.textLabel?.text = viewModel.priceString
+                cell.textLabel?.text = priceString(forProduct: product)
             case .availableSince:
-                cell.textLabel?.text = viewModel.dateString
+                cell.textLabel?.text = dateString(forProduct: product)
             }
             
             return cell
         case .buy:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductDetailBuyCell.self), for: indexPath) as! ProductDetailBuyCell
             cell.didTapBuyButton = { [weak self] in
-                self?.viewModel.buy()
+                guard let self = self else { return }
+                self.coordinator?.buy(product: self.product)
             }
             
             return cell
