@@ -15,8 +15,6 @@ class LoginCoordinator: BaseCoordinator {
     private weak var loginViewController: LoginViewController!
     private weak var registrationViewController: RegistrationViewController!
     
-    private var subscribers = Set<AnyCancellable>()
-    
     init(navigationController: UINavigationController?, parentCoordinator: BaseCoordinator?, presentingViewController: UIViewController?) {
         
         super.init(navigationController: navigationController, parentCoordinator: parentCoordinator)
@@ -27,7 +25,7 @@ class LoginCoordinator: BaseCoordinator {
     override func start() {
         
         loginViewController = LoginViewController.instantiate()
-        loginViewController.viewModel = LoginViewModel(coordinator: self)
+        loginViewController.coordinator = self
         
         if let presentingViewController = presentingViewController {
             let loginNavigationController = UINavigationController(rootViewController: loginViewController)
@@ -38,21 +36,10 @@ class LoginCoordinator: BaseCoordinator {
     }
     
     func showRegistration() {
-    
+        
         registrationViewController = RegistrationViewController.instantiate()
-        registrationViewController.viewModel = RegistrationViewModel(coordinator: self)
         let registrationNavigationController =  UINavigationController(rootViewController: registrationViewController)
         loginViewController?.present(registrationNavigationController, animated: true)
     }
-            
-    func didRegister(username: String, password: String) {
-        
-        loginViewController.viewModel.username = username
-        loginViewController.usernameTextField.text = username
-        loginViewController.viewModel.password = password
-        loginViewController.passwordTextField.text = password
-        
-        registrationViewController.dismiss(animated: true)
-    }
-
+    
 }

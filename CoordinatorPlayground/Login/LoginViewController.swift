@@ -16,11 +16,10 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
-    var viewModel: LoginViewModel!
-    private var subscribers = Set<AnyCancellable>()
+    var coordinator: LoginCoordinator!
     
     deinit {
-        viewModel.didComplete()
+        coordinator.parentCoordinator?.didComplete(coordinator: coordinator)
     }
     
     override func viewDidLoad() {
@@ -28,36 +27,15 @@ class LoginViewController: UIViewController, LoginFlow, Storyboarded {
         super.viewDidLoad()
         
         title = "Login"
-        
-        viewModel.state
-            .sink { [weak self] state in
-                switch state {
-                case .input:
-                    self?.errorLabel.isHidden = true
-                case .wrongCredentials:
-                    self?.errorLabel.isHidden = false
-                case .loggedIn:
-                    self?.dismiss(animated: true)
-                }
-        }.store(in: &subscribers)
-                
-        usernameTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.username, on: viewModel)
-            .store(in: &subscribers)
-        
-        passwordTextField.textPublisher
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.password, on: viewModel)
-            .store(in: &subscribers)
     }
     
     @IBAction func didTapLoginButton(_ sender: UIButton) {
-        viewModel.action.send(.login)
+        UserManager.isUserLoggedIn = true
+        dismiss(animated: true)
     }
     
     @IBAction func didTapRegisterButton(_ sender: UIButton) {
-        viewModel.action.send(.register)
+        coordinator.showRegistration()
     }
     
 }
