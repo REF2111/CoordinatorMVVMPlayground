@@ -15,7 +15,7 @@ class ProductDetailTableViewDataSource {
         case buy
     }
     
-    enum ProductInfo: Int {
+    enum ProductInfo: Int, CaseIterable {
         case name
         case price
         case availableSince
@@ -35,7 +35,7 @@ class ProductDetailTableViewDataSource {
         
         switch Section(rawValue: section)! {
         case .product:
-            return 3
+            return ProductInfo.allCases.count
         case .buy:
             return 1
         }
