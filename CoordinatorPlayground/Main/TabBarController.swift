@@ -20,8 +20,8 @@ class TabBarController: UITabBarController, MainFlow, Storyboarded {
         productCoordinator.start()
         otherTabCoordinator.start()
         viewControllers = [
-            productCoordinator.navigationController!,
-            otherTabCoordinator.navigationController!
+            productCoordinator.navigationController,
+            otherTabCoordinator.navigationController
         ]
     }
 }

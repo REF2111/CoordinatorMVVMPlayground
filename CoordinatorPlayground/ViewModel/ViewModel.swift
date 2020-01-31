@@ -18,6 +18,6 @@ extension ViewModel {
         
     func didComplete() {
         
-        coordinator?.parentCoordinator?.didComplete(coordinator: coordinator)
+        coordinator?.didComplete()
     }
 }
