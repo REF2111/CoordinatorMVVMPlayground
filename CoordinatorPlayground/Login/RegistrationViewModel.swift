@@ -75,18 +75,18 @@ class RegistrationViewModel: BaseViewModel {
             .sink { [weak self] text in
                 if text.isEmpty {
                     self?.usernameState.send(.input)
-                    return
+                } else {
+                    self?.usernameState.send(text.isValidUsername() ? .valid: .error)
                 }
-                self?.usernameState.send(text.isValidUsername() ? .valid: .error)
         }.store(in: &subscribers)
         
         emailSubject
             .sink { [weak self] text in
                 if text.isEmpty {
                     self?.mailState.send(.input)
-                    return
+                } else {
+                    self?.mailState.send(text.isValidMailAddress() ? .valid: .error)
                 }
-                self?.mailState.send(text.isValidMailAddress() ? .valid: .error)
         }.store(in: &subscribers)
         
         firstPasswordSubject
