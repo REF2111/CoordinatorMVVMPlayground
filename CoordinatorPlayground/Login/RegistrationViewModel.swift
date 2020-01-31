@@ -36,18 +36,21 @@ class RegistrationViewModel: BaseViewModel {
     private var loginCoordinator: LoginCoordinator {
         coordinator as! LoginCoordinator
     }
-    
+
+    // MARK: State and action subscriptions for notifying ViewController
     let action = PassthroughSubject<Action, Never>()
     let usernameState = CurrentValueSubject<UsernameState, Never>(.input)
     let mailState = CurrentValueSubject<MailState, Never>(.input)
     let passwordState = CurrentValueSubject<PasswordState, Never>(.input)
     let hasValidCredentials = CurrentValueSubject<Bool, Never>(false)
 
+    // MARK: Data bindings
     @Published var username = "" { didSet { usernameSubject.send(username) }}
     @Published var email = "" { didSet { emailSubject.send(email) }}
     @Published var firstPassword = "" { didSet { firstPasswordSubject.send(firstPassword) }}
     @Published var secondPassword = "" { didSet { secondPasswordSubject.send(secondPassword) }}
-    
+
+    // MARK: Subscriptions to data bindings
     private let usernameSubject = PassthroughSubject<String, Never>()
     private let emailSubject = PassthroughSubject<String, Never>()
     private let firstPasswordSubject = PassthroughSubject<String, Never>()
@@ -73,12 +76,20 @@ class RegistrationViewModel: BaseViewModel {
         
         usernameSubject
             .sink { [weak self] text in
-                self?.usernameState.send(text.isValidUsername() ? .valid: .error)
+                if text.isEmpty {
+                    self?.usernameState.send(.input)
+                } else {
+                    self?.usernameState.send(text.isValidUsername() ? .valid: .error)
+                }
         }.store(in: &subscribers)
         
         emailSubject
             .sink { [weak self] text in
-                self?.mailState.send(text.isValidMailAddress() ? .valid: .error)
+                if text.isEmpty {
+                    self?.mailState.send(.input)
+                } else {
+                    self?.mailState.send(text.isValidMailAddress() ? .valid: .error)
+                }
         }.store(in: &subscribers)
         
         firstPasswordSubject
@@ -100,7 +111,7 @@ class RegistrationViewModel: BaseViewModel {
         .subscribe(hasValidCredentials)
         .store(in: &subscribers)
     }
-    
+
     private func processAction(_ action: Action) {
         
         switch action {
