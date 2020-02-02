@@ -76,20 +76,12 @@ class RegistrationViewModel: BaseViewModel {
         
         usernameSubject
             .sink { [weak self] text in
-                if text.isEmpty {
-                    self?.usernameState.send(.input)
-                } else {
-                    self?.usernameState.send(text.isValidUsername() ? .valid: .error)
-                }
+                self?.processUsername(text)
         }.store(in: &subscribers)
         
         emailSubject
             .sink { [weak self] text in
-                if text.isEmpty {
-                    self?.mailState.send(.input)
-                } else {
-                    self?.mailState.send(text.isValidMailAddress() ? .valid: .error)
-                }
+                self?.processMailAddress(text)
         }.store(in: &subscribers)
         
         firstPasswordSubject
@@ -118,6 +110,24 @@ class RegistrationViewModel: BaseViewModel {
         case .register:
             UserManager.register(withUsername: username, andPassword: firstPassword)
             loginCoordinator.didRegister(username: username, password: firstPassword)
+        }
+    }
+    
+    private func processUsername(_ username: String) {
+        
+        if username.isEmpty {
+            usernameState.send(.input)
+        } else {
+            usernameState.send(username.isValidUsername() ? .valid: .error)
+        }
+    }
+    
+    private func processMailAddress(_ mailAddress: String) {
+        
+        if mailAddress.isEmpty {
+            mailState.send(.input)
+        } else {
+            mailState.send(mailAddress.isValidMailAddress() ? .valid: .error)
         }
     }
         
