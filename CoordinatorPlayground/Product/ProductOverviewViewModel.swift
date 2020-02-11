@@ -8,7 +8,7 @@
 
 import Combine
 
-class ProductFlowViewModel: BaseViewModel {
+class ProductOverviewViewModel: BaseViewModel {
     
     enum Action {
         case detail(ProductViewModel)

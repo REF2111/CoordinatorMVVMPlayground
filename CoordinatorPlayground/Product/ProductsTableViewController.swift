@@ -11,7 +11,7 @@ import UIKit
 
 class ProductsTableViewController: UITableViewController, ProductFlow, Storyboarded {
 
-    var viewModel: ProductFlowViewModel!
+    var viewModel: ProductOverviewViewModel!
     private var productSubscriber: AnyCancellable?
     private var products = [ProductViewModel]()
 
