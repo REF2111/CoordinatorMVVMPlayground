@@ -19,7 +19,7 @@ class ProductsTableViewController: UITableViewController, ProductFlow, Storyboar
 
         super.viewDidLoad()
 
-        productSubscriber = viewModel.productsValueSubject
+        productSubscriber = viewModel.productsPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] products in
                 self?.products = products
@@ -48,6 +48,6 @@ class ProductsTableViewController: UITableViewController, ProductFlow, Storyboar
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.action.send(.detail(products[indexPath.row]))
+        viewModel.actionPublisher.send(.detail(products[indexPath.row]))
     }
 }

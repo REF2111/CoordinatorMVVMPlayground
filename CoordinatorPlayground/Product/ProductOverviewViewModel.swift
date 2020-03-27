@@ -14,9 +14,9 @@ class ProductOverviewViewModel: BaseViewModel {
         case detail(ProductViewModel)
     }
 
-    let action = PassthroughSubject<Action, Never>()
+    let actionPublisher = PassthroughSubject<Action, Never>()
     private var actionSubscriber: AnyCancellable!
-    let productsValueSubject = CurrentValueSubject<[ProductViewModel], Never>([])
+    let productsPublisher = CurrentValueSubject<[ProductViewModel], Never>([])
     
     override init(coordinator: BaseCoordinator?) {
         
@@ -24,7 +24,7 @@ class ProductOverviewViewModel: BaseViewModel {
         
         downloadProducts()
         
-        actionSubscriber = action.sink(receiveValue: { [weak self] action in
+        actionSubscriber = actionPublisher.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
     }
@@ -38,7 +38,7 @@ class ProductOverviewViewModel: BaseViewModel {
         let products = Product.testProducts
             .map { ProductViewModel(coordinator: coordinator, product: $0) }
         
-        productsValueSubject.send(products)
+        productsPublisher.send(products)
     }
     
     private func processAction(_ action: Action) {
